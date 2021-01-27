@@ -14,12 +14,18 @@ class EquipmentListViewController: UIViewController {
     let titleLabel = UILabel()
     var tableView: UITableView?
     var constHeightTV: NSLayoutConstraint?
+    
+    let viewModel = ListViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setupUI()
+        
+        self.viewModel.bindToSourceViewModels = { [weak self] in
+            self?.refreshData()
+        }
     }
     
     func setupUI() {
@@ -59,22 +65,58 @@ class EquipmentListViewController: UIViewController {
         // configure table
         tableView?.delegate = self
         tableView?.dataSource = self
+        tableView?.register(HeaderTableViewCell.self, forCellReuseIdentifier: "header")
+        tableView?.register(DetailTableViewCell.self, forCellReuseIdentifier: "detail")
         tableView?.tableFooterView = UIView()
         tableView?.rowHeight = cellHeight
+    }
+    
+    private func refreshData() {
+        if viewModel.numberOfSection > 0 {
+            self.tableView?.reloadData()
+        }
     }
 }
 
 extension EquipmentListViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.numberOfSection
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel.numberOfRowsForSection(section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        if indexPath.row == 0 {
+            let cellHeader: HeaderTableViewCell = tableView.dequeueReusableCell(withIdentifier: "header", for: indexPath) as! HeaderTableViewCell
+            
+            let cellData = viewModel.tableCellDataModelForIndexPath(indexPath)
+            cellHeader.idLabel.text = cellData.id
+            cellHeader.makeLabel.text = cellData.title
+            if cellData.collapsed {
+                cellHeader.setCollapsedImage()
+            } else {
+                cellHeader.setExpandedImage()
+            }
+            return cellHeader
+        } else {
+            let cellDetail: DetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "detail", for: indexPath) as! DetailTableViewCell
+            
+            let cellData = viewModel.tableCellDataModelForIndexPath(indexPath)
+            cellDetail.subLabel.text = cellData.id
+            cellDetail.valueLabel.text = cellData.title
+            return cellDetail
+        }
     }
-    
-
 }
 
 extension EquipmentListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = indexPath.section
+        viewModel.updateCollapsedSection(section)
+        tableView.reloadSections(IndexSet(integer: section), with: .automatic)
+        self.tableView!.layoutIfNeeded()
+        self.constHeightTV?.constant = min(self.tableView!.contentSize.height, self.view.frame.height - 120)
+    }
 }

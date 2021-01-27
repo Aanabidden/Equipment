@@ -12,6 +12,11 @@
 		24D64D0025C12658001E5DDD /* EquipmentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D64CFF25C12658001E5DDD /* EquipmentListViewController.swift */; };
 		24D64D0525C12660001E5DDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24D64D0425C12660001E5DDD /* Assets.xcassets */; };
 		24D64D0825C12660001E5DDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24D64D0625C12660001E5DDD /* LaunchScreen.storyboard */; };
+		24D64D1625C12828001E5DDD /* EquipmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D64D1525C12828001E5DDD /* EquipmentModel.swift */; };
+		24D64D1B25C12860001E5DDD /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D64D1A25C1285F001E5DDD /* ListViewModel.swift */; };
+		24D64D1F25C12889001E5DDD /* DisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D64D1E25C12889001E5DDD /* DisplayModel.swift */; };
+		24D64D2325C128D0001E5DDD /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D64D2225C128D0001E5DDD /* DetailTableViewCell.swift */; };
+		24D64D2725C128E6001E5DDD /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D64D2625C128E6001E5DDD /* HeaderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		24D64D0425C12660001E5DDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24D64D0725C12660001E5DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24D64D0925C12660001E5DDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24D64D1525C12828001E5DDD /* EquipmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentModel.swift; sourceTree = "<group>"; };
+		24D64D1A25C1285F001E5DDD /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		24D64D1E25C12889001E5DDD /* DisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayModel.swift; sourceTree = "<group>"; };
+		24D64D2225C128D0001E5DDD /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		24D64D2625C128E6001E5DDD /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +64,51 @@
 		24D64CFA25C12658001E5DDD /* Equipment */ = {
 			isa = PBXGroup;
 			children = (
+				24D64D1925C1284D001E5DDD /* ViewModel */,
+				24D64D1425C1280C001E5DDD /* Model */,
+				24D64D1325C12801001E5DDD /* View */,
 				24D64CFB25C12658001E5DDD /* AppDelegate.swift */,
 				24D64CFD25C12658001E5DDD /* SceneDelegate.swift */,
-				24D64CFF25C12658001E5DDD /* EquipmentListViewController.swift */,
 				24D64D0425C12660001E5DDD /* Assets.xcassets */,
 				24D64D0625C12660001E5DDD /* LaunchScreen.storyboard */,
 				24D64D0925C12660001E5DDD /* Info.plist */,
 			);
 			path = Equipment;
+			sourceTree = "<group>";
+		};
+		24D64D1325C12801001E5DDD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				24D64D2125C128BA001E5DDD /* CustomCell */,
+				24D64CFF25C12658001E5DDD /* EquipmentListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		24D64D1425C1280C001E5DDD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				24D64D1525C12828001E5DDD /* EquipmentModel.swift */,
+				24D64D1E25C12889001E5DDD /* DisplayModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		24D64D1925C1284D001E5DDD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				24D64D1A25C1285F001E5DDD /* ListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		24D64D2125C128BA001E5DDD /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				24D64D2225C128D0001E5DDD /* DetailTableViewCell.swift */,
+				24D64D2625C128E6001E5DDD /* HeaderTableViewCell.swift */,
+			);
+			path = CustomCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,8 +180,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24D64D2725C128E6001E5DDD /* HeaderTableViewCell.swift in Sources */,
+				24D64D1B25C12860001E5DDD /* ListViewModel.swift in Sources */,
+				24D64D1625C12828001E5DDD /* EquipmentModel.swift in Sources */,
+				24D64D2325C128D0001E5DDD /* DetailTableViewCell.swift in Sources */,
 				24D64D0025C12658001E5DDD /* EquipmentListViewController.swift in Sources */,
 				24D64CFC25C12658001E5DDD /* AppDelegate.swift in Sources */,
+				24D64D1F25C12889001E5DDD /* DisplayModel.swift in Sources */,
 				24D64CFE25C12658001E5DDD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
