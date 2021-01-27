@@ -1,6 +1,6 @@
 //
 //  HeaderTableViewCell.swift
-//  JarusTech
+//  Equipment
 //
 //  Created by Aradhana on 23/01/21.
 //

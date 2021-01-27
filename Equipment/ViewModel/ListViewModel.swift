@@ -1,12 +1,11 @@
 //
 //  ListViewModel.swift
-//  JarusTech
+//  Equipment
 //
 //  Created by Aradhana on 23/01/21.
 //
 
 import Foundation
-import UIKit
 
 class ListViewModel {
     // Output
@@ -28,14 +27,16 @@ class ListViewModel {
     }
     
     func fetchList() {
-        if let json = NSDataAsset(name: "Data") {
-            let decoder = JSONDecoder()
-            do {
-                let modelList = try decoder.decode([Equipment].self, from: json.data)
+        let queue = OperationQueue()
+        let operation = AVOPeration <[Equipment], Swift.Error>(asset: "Data")
+        queue.addOperations([operation], waitUntilFinished: true)
+        switch operation.result {
+            case .success(let modelList):
                 self.dataModel = modelList
-            } catch {
-                print("\(error)")
-            }
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .none:
+                print("no results")
         }
     }
     
