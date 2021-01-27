@@ -56,9 +56,7 @@ class EquipmentListViewController: UIViewController {
                                               toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
         let constTopTV = NSLayoutConstraint(item: tableView!, attribute: .top, relatedBy: .equal,
                                             toItem: self.view, attribute: .top, multiplier: 1, constant: 120)
-        let constBottomTV = NSLayoutConstraint(item: tableView!, attribute: .bottom, relatedBy: .greaterThanOrEqual,
-                                              toItem: self.view, attribute: .bottom, multiplier: 1, constant: 5)
-        self.view.addConstraints([constLeadTV, constTrailTV, constTopTV, constBottomTV])
+        self.view.addConstraints([constLeadTV, constTrailTV, constTopTV])
         constHeightTV = NSLayoutConstraint(item: tableView!, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: cellHeight * 4)
         self.tableView?.addConstraints([constHeightTV!])
         
